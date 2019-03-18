@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/rust:1.33-stretch
+    steps:
+      - checkout
+      - run: cargo build --release
+      - store_artifacts:
+          path: target/release/awall-config-back
+          destination: awall-config-back
+
+
