@@ -1,0 +1,17 @@
+[package]
+name = "awall-config-back"
+version = "0.1.0"
+authors = ["minishift <minishift@example.com>"]
+edition = "2018"
+
+[dependencies]
+gotham = "0.3"
+gotham_derive = "0.3"
+hyper = "0.12"
+futures = "0.1"
+mime = "0.3"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+pnet = "0.22"
+clap = "2.31"
+unicase = "2.2"
