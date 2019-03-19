@@ -8,6 +8,7 @@ jobs:
       - run: |
           cargo build --release
           mkdir artifacts
+          cp target/release/awall-config-back artifacts/
       - store_artifacts:
           path: target/release/awall-config-back
           destination: artifacts/awall-config-back
@@ -23,7 +24,8 @@ jobs:
           command: |
             go get github.com/tcnksm/ghr
             VERSION=latest
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts/
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${VERSION} ./artifacts
+
 workflows:
   version: 2
   build_and_publish:
