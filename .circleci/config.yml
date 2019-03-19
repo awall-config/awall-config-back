@@ -13,16 +13,16 @@ jobs:
           path: target/release/awall-config-back
           destination: artifacts/awall-config-back
       - persist_to_workspace:
-        root: /tmp/workspace
-        paths:
-          - ./artifacts
+          root: /tmp/workspace
+          paths:
+            - ./artifacts
 
   publish-github-release:
     docker:
       - image: circleci/golang:1.8
     steps:
       - attach_workspace:
-          at: /tmp/worspace
+          at: /tmp/workspace
       - run:
           name: "Publish Release on GitHub"
           command: |
