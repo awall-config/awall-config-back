@@ -13,7 +13,7 @@ jobs:
           path: target/release/awall-config-back
           destination: artifacts/awall-config-back
       - persist_to_workspace:
-          root: /tmp/workspace
+          root: workspace
           paths:
             - ./artifacts
 
