@@ -5,10 +5,12 @@ jobs:
       - image: circleci/rust:1.33-stretch
     steps:
       - checkout
-      - run: cargo build --release
+      - run: |
+          cargo build --release
+          mkdir artifacts
       - store_artifacts:
           path: target/release/awall-config-back
-          destination: awall-config-back
+          destination: artifacts/awall-config-back
 
   publish-github-release:
     docker:
