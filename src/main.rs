@@ -63,14 +63,21 @@ pub fn main() {
                             .help("The awall config file")
                             .required(true)
                             .takes_value(true))
+                          .arg(Arg::with_name("listen")
+                            .short("l")
+                            .long("listen")
+                            .help("Listen interface")
+                            .required(false)
+                            .takes_value(true))
                           .get_matches();
 
     let conf = matches.value_of("config").unwrap_or("/etc/awall/private/base.json");
+    let listen = matches.value_of("listen").unwrap_or("127.0.0.1");
     let config_obj = config::Config::new ( conf.to_owned() );
 
     println!("Using config file: {}", conf);
 
-    let addr = "127.0.0.1:7878";
+    let addr = format!("{}:7878", listen);
     println!("Listening for requests at http://{}", addr);
 
     // All incoming requests are delegated to the router for further analysis and dispatch
